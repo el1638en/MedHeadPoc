@@ -1,0 +1,36 @@
+<div class="container">
+    <header class="main-header">
+      <section class="layout_padding" *ngIf="!isLoggedIn">
+        <div class="container ">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="detail-box">
+                <h2>
+                  Find the 
+                  <span>
+                    Nearest Hospital
+                  </span>
+                </h2>
+                <p>
+                  with your desired specialty and with a bed available. You must be logged in to search for hospitals.
+                </p>
+                <div class="row">
+                <a href="" routerLink="/register">Sign Up</a>                
+                <a href="" routerLink="/login">Login</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="img-box">
+                <img src="../../assets/images/slider-img.jpg" alt="patient in hospital bed with nurse">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    <section class="book_section layout_padding" *ngIf="isLoggedIn">
+      <app-booking></app-booking>
+    </section>
+    </header>
+  </div>
+  
