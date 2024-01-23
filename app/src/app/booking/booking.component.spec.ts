@@ -4,6 +4,10 @@ import { BookingComponent } from './booking.component';
 import { UserService } from '../_services/user.service';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { MockService } from '../utils/mock-service.spec';
+import { of } from 'rxjs';
+import { SpecialtyGroup } from '../core/models/specialty-group';
+import any = jasmine.any;
+import { Specialty } from '../core/models/specialty';
 
 describe('BookingComponent', () => {
   let component: BookingComponent;
@@ -39,6 +43,17 @@ describe('BookingComponent', () => {
   });
 
   it('should create', () => {
+    const specialtyGroup:  SpecialtyGroup = {
+      name: 'test',
+      id:1
+    };
+
+    const speciaty : Specialty = {
+      name: 'specialite',
+      id: 1
+    };
+    userService.getAllSpecialityGroups().and.returnValues(of([specialtyGroup]));
+    userService.getSpecialitiesBySpecialityGroupByName(any).and.returnValues(of([speciaty]))
     expect(component).toBeTruthy();
   });
 });
