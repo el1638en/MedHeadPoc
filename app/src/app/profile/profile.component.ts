@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TokenStorageService } from '../_services/token-storage.service';
-import { User } from '../core/models/user.model';
+import { User } from '../core/models/user';
 import { UserService } from '../_services/user.service';
 import { Observable, Subject, map, takeUntil, tap } from 'rxjs';
 

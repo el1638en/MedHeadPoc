@@ -1,10 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { User } from '../core/models/user.model';
-import { Hospital } from '../core/models/hospital.model';
+import { User } from '../core/models/user';
+import { Hospital } from '../core/models/hospital';
 import { Observable, Subject, take, takeUntil } from 'rxjs';
 import { UserService } from '../_services/user.service';
 import { TokenStorageService } from '../_services/token-storage.service';
-import { SpecialtyGroup } from '../core/models/specialty-group.model';
+import { SpecialtyGroup } from '../core/models/specialty-group';
 import { Specialty } from '../core/models/specialty';
 
 const API_LOC_URL = '/api/hospitals/';

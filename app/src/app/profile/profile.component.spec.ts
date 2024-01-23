@@ -4,6 +4,7 @@ import { ProfileComponent } from './profile.component';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { UserService } from '../_services/user.service';
 import { MockService } from '../utils/mock-service.spec';
+import { User } from '../core/models/user';
 
 describe('ProfileComponent', () => {
   let component: ProfileComponent;
@@ -41,6 +42,8 @@ describe('ProfileComponent', () => {
   });
 
   it('should create', () => {
+    // @ts-ignore
+    tokenStorageService.getUser.email = "email@test.com";
     expect(component).toBeTruthy();
   });
 });

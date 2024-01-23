@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../_services/user.service';
-import { User } from 'src/app/core/models/user.model';
-import { Hospital } from 'src/app/core/models/hospital.model';
+import { User } from 'src/app/core/models/user';
+import { Hospital } from 'src/app/core/models/hospital';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { TokenStorageService } from '../_services/token-storage.service';
 

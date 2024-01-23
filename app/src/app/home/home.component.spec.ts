@@ -4,9 +4,9 @@ import { HomeComponent } from './home.component';
 import { UserService } from '../_services/user.service';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { MockService } from '../utils/mock-service.spec';
-import { User } from '../core/models/user.model';
-import { Hospital } from '../core/models/hospital.model';
-import { SpecialtyGroup } from '../core/models/specialty-group.model';
+import { User } from '../core/models/user';
+import { Hospital } from '../core/models/hospital';
+import { SpecialtyGroup } from '../core/models/specialty-group';
 import { Specialty } from '../core/models/specialty';
 
 describe('HomeComponent', () => {

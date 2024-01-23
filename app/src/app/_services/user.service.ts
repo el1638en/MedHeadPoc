@@ -1,9 +1,9 @@
 import { Injectable, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, from, map } from 'rxjs';
-import { User } from '../core/models/user.model';
-import { Hospital } from '../core/models/hospital.model';
-import { SpecialtyGroup } from '../core/models/specialty-group.model';
+import { User } from '../core/models/user';
+import { Hospital } from '../core/models/hospital';
+import { SpecialtyGroup } from '../core/models/specialty-group';
 import { Specialty } from '../core/models/specialty';
 
 const API_URL = '/api/users/';
