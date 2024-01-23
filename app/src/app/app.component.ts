@@ -19,10 +19,10 @@ export class AppComponent implements OnInit {
   patient!: any;
   private readonly unsubscribe$ = new Subject();
 
-  constructor(private tokenStorageService: TokenStorageService, private userService: UserService,library: FaIconLibrary, private router: Router) { 
-    library.addIcons(faUser);
+  constructor(private tokenStorageService: TokenStorageService, private userService: UserService, private router: Router) { // ,library: FaIconLibrary
+    // library.addIcons(faUser);
   }
- 
+
   ngOnInit() {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
@@ -32,20 +32,20 @@ export class AppComponent implements OnInit {
 
       this.registeredUser =this.userService.getUserByEmail(user.email).pipe(
         takeUntil(this.unsubscribe$)).subscribe(
-          (data) => {          
-        this.registeredUser = data;      
+          (data) => {
+        this.registeredUser = data;
         this.userService.getUserContent(this.registeredUser.id).subscribe(
           (data) => {
             this.patient = data;
           }
         );
           }
-        ); 
+        );
     }
   }
 
   logout() {
-    this.tokenStorageService.signOut();    
+    this.tokenStorageService.signOut();
     this.router.navigate(['/home']);
   }
 }
