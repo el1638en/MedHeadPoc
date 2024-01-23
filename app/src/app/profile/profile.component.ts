@@ -11,8 +11,8 @@ import { Observable, Subject, map, takeUntil, tap } from 'rxjs';
 })
 export class ProfileComponent implements OnInit {
   currentUser: any;
-  @Input() user!: User;  
-  patient!: any; 
+  @Input() user!: User;
+  patient!: any;
   registeredUser!: any;
   private readonly unsubscribe$ = new Subject();
   form: any = {};
@@ -22,33 +22,33 @@ export class ProfileComponent implements OnInit {
   isLoggedIn = false;
 
 
-  constructor(private token: TokenStorageService, private userService: UserService) { }
+  constructor(private tokenStorageService: TokenStorageService, private userService: UserService) { }
 
   ngOnInit() {
-    if (this.token.getToken()) {
+    if (this.tokenStorageService.getToken()) {
       this.isLoggedIn = true;
       if( window.localStorage ){
         if( !localStorage.getItem('firstLoad')){
           localStorage['firstLoad'] = true;
           window.location.reload();
-        }  
+        }
         else{
          localStorage.removeItem('firstLoad');
         }
       }
     }
-    this.currentUser = this.token.getUser();
+    this.currentUser = this.tokenStorageService.getUser();
     this.registeredUser =this.userService.getUserByEmail(this.currentUser.email).pipe(
       takeUntil(this.unsubscribe$)).subscribe(
-        (data) => {          
-      this.registeredUser = data; 
+        (data) => {
+      this.registeredUser = data;
       this.userService.getUserContent(this.registeredUser.id).subscribe(
         (data) => {
           this.patient = data;
         }
       );
         }
-      ); 
+      );
   }
 
   onSubmit() {
