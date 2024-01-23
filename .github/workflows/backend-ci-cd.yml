@@ -21,7 +21,10 @@ jobs:
       run: mvn clean compile --file pom.xml
       
     - name: Run verify with maven
-      run: mvn verify
+      run: mvn verify --file pom.xml
       
-    - name: Run package with maven
-      run : mvn -B package -DskipTests --file pom.xml
+    # - name: Build and analyze
+      # env:
+       # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+       # SONAR_TOKEN: ${{ secrets. SONARCLOUD_TOKEN }}
+      # run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=xxxx --file pom.xml
