@@ -24,24 +24,24 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isLoggedIn = !!this.tokenStorageService.getToken();
-
-    if (this.isLoggedIn) {
-      const user = this.tokenStorageService.getUser();
-      this.roles = user.roles;
-
-      this.registeredUser =this.userService.getUserByEmail(user.email).pipe(
-        takeUntil(this.unsubscribe$)).subscribe(
-          (data) => {
-        this.registeredUser = data;
-        this.userService.getUserContent(this.registeredUser.id).subscribe(
-          (data) => {
-            this.patient = data;
-          }
-        );
-          }
-        );
-    }
+    // this.isLoggedIn = !!this.tokenStorageService.getToken();
+    //
+    // if (this.isLoggedIn) {
+    //   const user = this.tokenStorageService.getUser();
+    //   this.roles = user.roles;
+    //
+    //   this.registeredUser =this.userService.getUserByEmail(user.email).pipe(
+    //     takeUntil(this.unsubscribe$)).subscribe(
+    //       (data) => {
+    //     this.registeredUser = data;
+    //     this.userService.getUserContent(this.registeredUser.id).subscribe(
+    //       (data) => {
+    //         this.patient = data;
+    //       }
+    //     );
+    //       }
+    //     );
+    // }
   }
 
 

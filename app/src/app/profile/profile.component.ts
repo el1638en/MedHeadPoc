@@ -25,30 +25,30 @@ export class ProfileComponent implements OnInit {
   constructor(private tokenStorageService: TokenStorageService, private userService: UserService) { }
 
   ngOnInit() {
-    if (this.tokenStorageService.getToken()) {
-      this.isLoggedIn = true;
-      if( window.localStorage ){
-        if( !localStorage.getItem('firstLoad')){
-          localStorage['firstLoad'] = true;
-          window.location.reload();
-        }
-        else{
-         localStorage.removeItem('firstLoad');
-        }
-      }
-    }
-    this.currentUser = this.tokenStorageService.getUser();
-    this.registeredUser =this.userService.getUserByEmail(this.currentUser.email).pipe(
-      takeUntil(this.unsubscribe$)).subscribe(
-        (data) => {
-      this.registeredUser = data;
-      this.userService.getUserContent(this.registeredUser.id).subscribe(
-        (data) => {
-          this.patient = data;
-        }
-      );
-        }
-      );
+    // if (this.tokenStorageService.getToken()) {
+    //   this.isLoggedIn = true;
+    //   if( window.localStorage ){
+    //     if( !localStorage.getItem('firstLoad')){
+    //       localStorage['firstLoad'] = true;
+    //       window.location.reload();
+    //     }
+    //     else{
+    //      localStorage.removeItem('firstLoad');
+    //     }
+    //   }
+    // }
+    // this.currentUser = this.tokenStorageService.getUser();
+    // this.registeredUser =this.userService.getUserByEmail(this.currentUser.email).pipe(
+    //   takeUntil(this.unsubscribe$)).subscribe(
+    //     (data) => {
+    //   this.registeredUser = data;
+    //   this.userService.getUserContent(this.registeredUser.id).subscribe(
+    //     (data) => {
+    //       this.patient = data;
+    //     }
+    //   );
+    //     }
+    //   );
   }
 
   onSubmit() {
