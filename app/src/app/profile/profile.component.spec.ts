@@ -44,6 +44,7 @@ describe('ProfileComponent', () => {
   it('should create', () => {
     // @ts-ignore
     tokenStorageService.getUser.email = "email@test.com";
+    tokenStorageService.getUser.ro = "email@test.com";
     expect(component).toBeTruthy();
   });
 });
