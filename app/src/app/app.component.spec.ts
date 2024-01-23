@@ -7,6 +7,7 @@ import { MockService } from './utils/mock-service.spec';
 import { UserService } from './_services/user.service';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { Router } from '@angular/router';
+import { ProfileComponent } from './profile/profile.component';
 
 describe('AppComponent', () => {
 
@@ -38,7 +39,13 @@ describe('AppComponent', () => {
       { provide: TokenStorageService, useValue: tokenStorageService },
       { provide: Router, useValue: router }
     ],
-  }));
+  }).overrideComponent(AppComponent, {
+    // Setter le template à la valeur '' pour nepas gérer le code html.
+    // On se concentre uniquement sur la logique métier.
+    set: {
+      template: ''
+    }
+  }).compileComponents());
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
