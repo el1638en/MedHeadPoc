@@ -44,6 +44,7 @@ export class AppComponent implements OnInit {
     }
   }
 
+  
   logout() {
     this.tokenStorageService.signOut();
     this.router.navigate(['/home']);
