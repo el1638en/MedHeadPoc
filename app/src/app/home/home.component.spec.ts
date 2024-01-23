@@ -12,8 +12,8 @@ import { Specialty } from '../core/models/specialty';
 describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
-  let userService;
-  let tokenStorageService;
+  let userService: UserService;
+  let tokenStorageService: TokenStorageService;
 
 
   beforeEach(() => {
