@@ -20,8 +20,8 @@ jobs:
     - name: Compile with Maven
       run: mvn clean compile --file pom.xml
       
-    - name: Run test with maven
-      run: mvn test
+    - name: Run verify with maven
+      run: mvn verify
       
     - name: Run package with maven
       run : mvn -B package -DskipTests --file pom.xml
