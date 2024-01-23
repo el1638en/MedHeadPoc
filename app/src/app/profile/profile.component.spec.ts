@@ -28,7 +28,13 @@ describe('ProfileComponent', () => {
         { provide: UserService, useValue: userService },
         { provide: TokenStorageService, useValue: tokenStorageService }
       ],
-    });
+    }).overrideComponent(ProfileComponent, {
+      // Setter le template à la valeur '' pour nepas gérer le code html.
+      // On se concentre uniquement sur la logique métier.
+      set: {
+        template: ''
+      }
+    }).compileComponents();
     fixture = TestBed.createComponent(ProfileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

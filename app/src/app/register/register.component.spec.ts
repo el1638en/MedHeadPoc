@@ -28,7 +28,13 @@ describe('RegisterComponent', () => {
         { provide: Router, useValue: router }
       ],
       imports: [RouterTestingModule]
-    });
+    }).overrideComponent(RegisterComponent, {
+      // Setter le template à la valeur '' pour nepas gérer le code html.
+      // On se concentre uniquement sur la logique métier.
+      set: {
+        template: ''
+      }
+    }).compileComponents();
     fixture = TestBed.createComponent(RegisterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -34,7 +34,13 @@ describe('LoginComponent', () => {
         { provide: Router, useValue: router }
       ],
       imports: [RouterTestingModule]
-    });
+    }).overrideComponent(LoginComponent, {
+      // Setter le template à la valeur '' pour nepas gérer le code html.
+      // On se concentre uniquement sur la logique métier.
+      set: {
+        template: ''
+      }
+    }).compileComponents();
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
