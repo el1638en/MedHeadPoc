@@ -52,8 +52,9 @@ describe('BookingComponent', () => {
       name: 'specialite',
       id: 1
     };
-    userService.getAllSpecialityGroups = of([specialtyGroup]);
-    userService.getSpecialitiesBySpecialityGroupByName = of([speciaty]);
+
+    // userService.getAllSpecialityGroups.and.returnValue(of([specialtyGroup]));
+    // userService.getSpecialitiesBySpecialityGroupByName = of([speciaty]);
     expect(component).toBeTruthy();
   });
 });

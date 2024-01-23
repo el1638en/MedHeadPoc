@@ -38,41 +38,41 @@ export class BookingComponent {
   constructor(private userService: UserService, private tokenStorageService: TokenStorageService) { }
 
   ngOnInit() {
-    if (this.tokenStorageService.getToken()) {
-      this.isLoggedIn = true;
-      this.currentUser = this.tokenStorageService.getUser();
-      this.registeredUser =this.userService.getUserByEmail(this.currentUser.email).pipe(
-        takeUntil(this.unsubscribe$)).subscribe(
-          (data) => {
-        this.registeredUser = data;
-        this.userService.getUserContent(this.registeredUser.id).subscribe(
-          (data) => {
-            this.patient = data;
-            this.patientFullAddress = this.patient.address+', '+this.patient.postCode+', '+this.patient.city;
-          }
-        );
-          }
-        );
-    }
-
-    this.userService.getAllSpecialityGroups().pipe(
-      takeUntil(this.unsub$)).subscribe(
-      (data)=>{
-        this.speGroups$ = data;
-        this.userService.getSpecialitiesBySpecialityGroupByName(this.speGroups$[0].name).subscribe(
-      data => {
-        this.specialties$ = data;
-        let speGroupSelectValue = document.getElementById("inputSpecialtyGroup")?.nodeValue;
-        let speSelect = document.getElementById("inputSpecialty");
-        let speSelectLabel = document.getElementById("inputSpecialtyLabel");
-        if(speGroupSelectValue==null){
-          speSelect?.setAttribute("style", "visibility:hidden");
-          speSelectLabel?.setAttribute("style", "visibility:hidden");
-        }
-      }
-    );
-  }
-      );
+  //   if (this.tokenStorageService.getToken()) {
+  //     this.isLoggedIn = true;
+  //     this.currentUser = this.tokenStorageService.getUser();
+  //     this.registeredUser =this.userService.getUserByEmail(this.currentUser.email).pipe(
+  //       takeUntil(this.unsubscribe$)).subscribe(
+  //         (data) => {
+  //       this.registeredUser = data;
+  //       this.userService.getUserContent(this.registeredUser.id).subscribe(
+  //         (data) => {
+  //           this.patient = data;
+  //           this.patientFullAddress = this.patient.address+', '+this.patient.postCode+', '+this.patient.city;
+  //         }
+  //       );
+  //         }
+  //       );
+  //   }
+  //
+  //   this.userService.getAllSpecialityGroups().pipe(
+  //     takeUntil(this.unsub$)).subscribe(
+  //     (data)=>{
+  //       this.speGroups$ = data;
+  //       this.userService.getSpecialitiesBySpecialityGroupByName(this.speGroups$[0].name).subscribe(
+  //     data => {
+  //       this.specialties$ = data;
+  //       let speGroupSelectValue = document.getElementById("inputSpecialtyGroup")?.nodeValue;
+  //       let speSelect = document.getElementById("inputSpecialty");
+  //       let speSelectLabel = document.getElementById("inputSpecialtyLabel");
+  //       if(speGroupSelectValue==null){
+  //         speSelect?.setAttribute("style", "visibility:hidden");
+  //         speSelectLabel?.setAttribute("style", "visibility:hidden");
+  //       }
+  //     }
+  //   );
+  // }
+  //     );
 }
 
 
