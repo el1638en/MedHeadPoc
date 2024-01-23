@@ -11,25 +11,25 @@ import { TokenStorageService } from '../_services/token-storage.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  
+
   isLoggedIn = false;
   currentUser: any;
-  @Input() user!: User;  
-  patient!: any; 
+  @Input() user!: User;
+  patient!: any;
   registeredUser!: any;
   patientFullAddress!: string;
   private readonly unsubscribe$ = new Subject();
 
-  constructor(private userService: UserService, private token: TokenStorageService) { }
-  
+  constructor(private userService: UserService, private tokenStorageService: TokenStorageService) { }
+
   ngOnInit() {
-    if (this.token.getToken()) {
+    if (this.tokenStorageService.getToken()) {
       this.isLoggedIn = true;
-      this.currentUser = this.token.getUser();
+      this.currentUser = this.tokenStorageService.getUser();
       this.registeredUser =this.userService.getUserByEmail(this.currentUser.email).pipe(
         takeUntil(this.unsubscribe$)).subscribe(
-          (data) => {          
-        this.registeredUser = data;      
+          (data) => {
+        this.registeredUser = data;
         this.userService.getUserContent(this.registeredUser.id).subscribe(
           (data) => {
             this.patient = data;
@@ -41,5 +41,5 @@ export class HomeComponent implements OnInit {
 
   }
 
- 
+
 }

@@ -17,24 +17,24 @@ export class LoginComponent implements OnInit {
   roles: string[] = [];
   data!: string;
 
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router) {}
+  constructor(private authService: AuthService, private tokenStorageService: TokenStorageService, private router: Router) {}
 
   ngOnInit() {
-    if (this.tokenStorage.getToken()) {
+    if (this.tokenStorageService.getToken()) {
       this.isLoggedIn = true;
-      this.roles = this.tokenStorage.getUser().roles;
+      this.roles = this.tokenStorageService.getUser().roles;
     }
   }
 
   onSubmit() {
     this.authService.login(this.form).subscribe(
       data => {
-        this.tokenStorage.saveToken(data.accessToken);
-        this.tokenStorage.saveUser(data);
+        this.tokenStorageService.saveToken(data.accessToken);
+        this.tokenStorageService.saveUser(data);
 
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.roles = this.tokenStorage.getUser().roles;
+        this.roles = this.tokenStorageService.getUser().roles;
         this.router.navigate(['/profile']);
       },
       err => {
